@@ -1,6 +1,4 @@
 var socket = require('socket.io-client')('https://polar-mountain-46105.herokuapp.com/');
-var GPIO = require('onoff').Gpio,
-    led = new GPIO(18, 'out');
     
 socket.on('connect', function(){
     console.log('connect');
@@ -9,7 +7,6 @@ socket.on('connect', function(){
 socket.on('pushState', function(data){
     console.log('pushState');
     console.log(data);
-    led.writeSync(parseInt(data.state);
 });
  
 socket.on('disconnect', function(){
