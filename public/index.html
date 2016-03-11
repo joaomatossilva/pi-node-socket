@@ -1,9 +1,21 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io.connect('http://localhost:3000');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-</script>
-<button onclick="socket.emit('my other event', { my: 'data' });alert(io);"></button>
+<html>
+    <head>
+    </head>
+    <body>
+        <button id="btn">push</button>
+        
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+        var socket = io.connect('https://polar-mountain-46105.herokuapp.com/');
+        socket.on('news', function (data) {
+            console.log(data);
+        });
+        $(function(){
+            $("#btn").click(function(){
+                $.post('/', {state: 1});
+            });
+        })
+        </script>
+    <body>
+</html>

@@ -1,17 +1,17 @@
-var socket = require('socket.io-client')('http://localhost:3000');
-  socket.on('connect', function(){
-      console.log('connect');
-  });
-  socket.on('event', function(data){});
-  socket.on('my other event', function(data){
-      console.log(data);
-  });
-  socket.on('news', function(data){
-      console.log(data);
-  });
-  socket.on('oi', function(data){
-      console.log(data);
-  });
-  socket.on('disconnect', function(){
-      console.log('disconnect');
-  });
+var socket = require('socket.io-client')('https://polar-mountain-46105.herokuapp.com/');
+var GPIO = require('onoff').Gpio,
+    led = new GPIO(18, 'out');
+    
+socket.on('connect', function(){
+    console.log('connect');
+});
+ 
+socket.on('pushState', function(data){
+    console.log('pushState');
+    console.log(data);
+    led.writeSync(data.state);
+});
+ 
+socket.on('disconnect', function(){
+    console.log('disconnect');
+});
