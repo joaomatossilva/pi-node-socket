@@ -9,7 +9,7 @@ socket.on('connect', function(){
 socket.on('pushState', function(data){
     console.log('pushState');
     console.log(data);
-    led.writeSync(parseInt(data.state);
+    led.writeSync(parseInt(data.state));
 });
  
 socket.on('disconnect', function(){
