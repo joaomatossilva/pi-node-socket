@@ -10,6 +10,9 @@ socket.on('pushState', function(data){
     console.log('pushState');
     console.log(data);
     led.writeSync(parseInt(data.state));
+    intervalId = setInterval( function(){
+        led.writeSync(0);
+    }, 100);
 });
  
 socket.on('disconnect', function(){
