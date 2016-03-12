@@ -4,11 +4,16 @@
     <body>
         <button id="btn">push</button>
         
+        <ul id="events">
+            
+        </ul>
+        
         <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script>
         var socket = io.connect('https://polar-mountain-46105.herokuapp.com/');
-        socket.on('news', function (data) {
+        socket.on('pushState', function (data) {
+            $("#events").append("<li>" + JSON.stringify(data) + "</li>")
             console.log(data);
         });
         $(function(){
