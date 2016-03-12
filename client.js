@@ -12,7 +12,7 @@ socket.on('pushState', function(data){
     led.writeSync(parseInt(data.state));
     intervalId = setInterval( function(){
         led.writeSync(0);
-    }, 100);
+    }, 3000);
 });
  
 socket.on('disconnect', function(){
